@@ -1,0 +1,44 @@
+Container do Carrossel de Projetos
+<div class="relative my-8">
+  <!-- Botão para retroceder -->
+  <button id="prev" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-yellow-500 text-black p-2 rounded-full hover:bg-yellow-600">&lt;</button>
+  
+  <!-- Carrossel (rolagem horizontal com scroll suave) -->
+  <div id="projectsCarousel" class="flex overflow-x-auto scroll-smooth space-x-4 px-12">
+    <!-- Exemplo de card de projeto -->
+    <div class="project-card bg-zinc-900 p-4 rounded hover:shadow-lg cursor-pointer min-w-[250px]"
+         data-video="videos/projeto1.mp4"
+         data-description="Descrição detalhada do Projeto 1. Aqui pode conter bastante texto, e se for maior que o container, o scroll será ativado.">
+      <img src="imagens/projeto1.jpg" alt="Projeto 1" class="w-full rounded">
+      <h3 class="text-xl mt-2 text-yellow-500">Projeto 1</h3>
+    </div>
+    <!-- Repita os cards conforme necessário -->
+    <!-- ... -->
+  </div>
+  
+  <!-- Botão para avançar -->
+  <button id="next" class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-yellow-500 text-black p-2 rounded-full hover:bg-yellow-600">&gt;</button>
+</div>
+
+<!-- Modal para exibir vídeo e descrição -->
+<div id="projectModal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-75 hidden">
+  <div class="bg-zinc-900 rounded-lg w-11/12 md:w-3/4 lg:w-1/2 p-4 relative flex flex-col md:flex-row">
+    <!-- Botão para fechar -->
+    <button id="closeModal" class="absolute top-2 right-2 text-white text-2xl">&times;</button>
+    
+    <!-- Vídeo -->
+    <div class="w-full md:w-1/2">
+      <video id="modalVideo" controls class="w-full rounded">
+        <source src="" type="video/mp4">
+        Seu navegador não suporta a tag de vídeo.
+      </video>
+    </div>
+    
+    <!-- Descrição com scroll se necessário -->
+    <div class="w-full md:w-1/2 md:pl-4 mt-4 md:mt-0">
+      <div class="h-64 overflow-y-auto p-2 bg-zinc-800 rounded text-gray-300">
+        <p id="modalDescription">Descrição do projeto</p>
+      </div>
+    </div>
+  </div>
+</div>
