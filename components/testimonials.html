@@ -1,32 +1,33 @@
 <!-- Seção de Depoimentos e Recomendações -->
-<section class="py-16 w-full">
+<section class="py-12 w-full">
   <div class="container mx-auto px-4 content-container">
-    <h2 class="text-4xl font-bold text-center mb-12 text-yellow-500 scroll-reveal">Depoimentos</h2>
-    <p class="text-gray-300 text-center mb-12 max-w-2xl mx-auto scroll-reveal delay-100">Confira o que clientes, colegas e parceiros dizem sobre minha atuação profissional e projetos desenvolvidos.</p>
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-12 text-yellow-500 scroll-reveal">Depoimentos</h2>
+    <p class="text-gray-300 text-center mb-8 md:mb-12 max-w-2xl mx-auto text-sm md:text-base scroll-reveal delay-100">Confira o que clientes, colegas e parceiros dizem sobre minha atuação profissional e projetos desenvolvidos.</p>
     
     <!-- Carrossel de Depoimentos -->
-    <div class="relative max-w-4xl mx-auto px-14">
-      <!-- Botões de navegação -->
-      <button id="prevTestimonial" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-zinc-900/80 hover:bg-zinc-800 text-yellow-500 rounded-full p-3 z-10 transition duration-300 opacity-70 hover:opacity-100 focus:outline-none shadow-lg backdrop-blur-sm">
+    <div class="relative max-w-full md:max-w-4xl mx-auto md:px-14">
+      <!-- Botão anterior (oculto em dispositivos móveis) -->
+      <button id="prevTestimonial" class="hidden md:block absolute -left-2 top-1/2 transform -translate-y-1/2 bg-zinc-900/80 hover:bg-zinc-800 text-yellow-500 rounded-full p-3 z-10 transition duration-300 opacity-70 hover:opacity-100 focus:outline-none shadow-lg backdrop-blur-sm">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
       
-      <!-- Container do carrossel -->
-      <div id="testimonialsCarousel" class="flex overflow-x-auto gap-8 py-8 px-2 hide-scrollbar scroll-smooth snap-x rounded-xl">
+      <!-- Container do carrossel sem padding lateral (já adicionado no container pai) -->
+      <div id="testimonialsCarousel" class="flex overflow-x-auto gap-4 md:gap-8 py-4 md:py-8 hide-scrollbar scroll-smooth snap-x">
         <!-- Os depoimentos serão inseridos aqui dinamicamente -->
       </div>
       
-      <button id="nextTestimonial" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-zinc-900/80 hover:bg-zinc-800 text-yellow-500 rounded-full p-3 z-10 transition duration-300 opacity-70 hover:opacity-100 focus:outline-none shadow-lg backdrop-blur-sm">
+      <!-- Botão próximo (oculto em dispositivos móveis) -->
+      <button id="nextTestimonial" class="hidden md:block absolute -right-2 top-1/2 transform -translate-y-1/2 bg-zinc-900/80 hover:bg-zinc-800 text-yellow-500 rounded-full p-3 z-10 transition duration-300 opacity-70 hover:opacity-100 focus:outline-none shadow-lg backdrop-blur-sm">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
       </button>
       
       <!-- Indicadores de navegação -->
-      <div class="flex justify-center mt-6 overflow-x-auto py-2 no-scrollbar">
-        <div class="flex space-x-3 px-5 py-2" id="testimonialDots">
+      <div class="flex justify-center mt-4 md:mt-6 overflow-x-auto py-2 no-scrollbar">
+        <div class="flex space-x-3 px-2 py-2" id="testimonialDots">
           <!-- Os indicadores serão adicionados dinamicamente -->
         </div>
       </div>
@@ -157,5 +158,26 @@
     align-self: flex-start;
     font-weight: 500;
     cursor: pointer;
+  }
+
+  /* Estilos responsivos para os cards */
+  @media (max-width: 768px) {
+    .testimonial-card {
+      min-width: 280px;
+      max-width: 280px;
+      padding: 1.5rem;
+    }
+    
+    .testimonial-card::before {
+      font-size: 4rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .testimonial-card {
+      min-width: 260px;
+      max-width: 260px;
+      padding: 1.25rem;
+    }
   }
 </style> 

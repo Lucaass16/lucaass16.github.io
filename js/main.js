@@ -282,6 +282,8 @@ $(document).ready(function () {
             updateTestimonialDots(Math.min(index, visibleDots - 1));
         });
         
+        // Adicionar os handlers dos botões de navegação:
+        
         // Botão anterior
         $(document).on("click", "#prevTestimonial", function() {
             console.log("Botão anterior clicado (depoimentos)");
@@ -664,6 +666,8 @@ $(document).ready(function () {
             // Atualizar os indicadores
             updateCarouselDots(Math.min(index, visibleDots - 1));
         });
+
+        // Adicionar os handlers dos botões de navegação:
         
         // Botão anterior
         $(document).on("click", "#prev", function() {

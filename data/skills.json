@@ -96,6 +96,10 @@
     "icon": "devicon-flask-plain"
   },
   {
+    "name": "jQuery",
+    "icon": "devicon-jquery-plain"
+  },
+  {
     "name": "Linux",
     "icon": "devicon-linux-plain"
   },
