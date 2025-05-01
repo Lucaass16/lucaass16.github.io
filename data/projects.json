@@ -2,7 +2,7 @@
   {
     "title": "Xys Bio",
     "image": "media/images/xysbio.png",
-    "video": "media/videos/radiogym.webm",
+    "video": "media/videos/xysbio.webm",
     "description": "Xys Bio é um SaaS de portfólios digitais personalizáveis que une design moderno e alta performance para elevar a presença online de profissionais, marcas, gamers e streamers. Atualmente em fase beta, o sistema está sendo testado e recebendo feedbacks.",
     "link": "https://xys.bio/",
     "technologies": ["Java", "Spring", "TypeScript", "React", "Next.js", "PostgreSQL", "Docker", "AWS", "Nginx", "Cloudflare"]
