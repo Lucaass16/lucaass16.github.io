@@ -1,11 +1,19 @@
 [
   {
+    "name": "C#",
+    "icon": "devicon-csharp-plain"
+  },
+  {
+    "name": "Java",
+    "icon": "devicon-java-plain"
+  },
+  {
     "name": "Python",
     "icon": "devicon-python-plain"
   },
   {
-    "name": "C#",
-    "icon": "devicon-csharp-plain"
+    "name": "TypeScript",
+    "icon": "devicon-typescript-plain"
   },
   {
     "name": "Javascript",
@@ -60,8 +68,16 @@
     "icon": "devicon-dot-net-plain"
   },
   {
+    "name": "Spring",
+    "icon": "devicon-spring-plain"
+  },
+  {
     "name": "React",
     "icon": "devicon-react-plain"
+  },
+  {
+    "name": "Next.js",
+    "icon": "devicon-nextjs-plain"
   },
   {
     "name": "React Native",
@@ -98,5 +114,19 @@
   {
     "name": "Nginx",
     "icon": "devicon-nginx-plain"
+  },
+  {
+    "name": "Redis",
+    "icon": "devicon-redis-plain"
+  },
+  {
+    "name": "Azure",
+    "icon": "devicon-azure-plain"
+  },
+  {
+    "name": "AWS",
+    "icon": "devicon-amazonwebservices-plain"
   }
+  
+    
 ]
