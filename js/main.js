@@ -51,9 +51,9 @@ $(document).ready(function () {
         $.getJSON('data/skills.json', function (skills) {
             $.each(skills, function (index, skill) {
                 var skillHtml = `
-            <div class="bg-zinc-900 w-28 h-28 rounded-lg flex flex-col items-center justify-center transform transition duration-300 hover:scale-105 hover:border hover:border-yellow-500 border border-transparent scroll-reveal">              
-                <i class="${skill.icon} text-6xl text-yellow-500"></i>
-                <p class="text-lg mt-2 text-yellow-500">${skill.name}</p>
+            <div class="bg-zinc-900 w-28 h-28 rounded-lg flex flex-col items-center justify-center transform transition duration-300 hover:scale-105 hover:border hover:border-purple-500 border border-transparent scroll-reveal">              
+                <i class="${skill.icon} text-6xl text-purple-500"></i>
+                <p class="text-lg mt-2 text-purple-500">${skill.name}</p>
             </div>
           `;
                 $('#skillsContainer').append(skillHtml);
@@ -76,7 +76,7 @@ $(document).ready(function () {
             var visibleDots = Math.max(1, testimonials.length - 1); // Um a menos do que o total
             for (var i = 0; i < visibleDots; i++) {
                 var dot = $('<div></div>')
-                    .addClass('w-2 h-2 rounded-full bg-zinc-700 hover:bg-yellow-500 transition duration-300 cursor-pointer')
+                    .addClass('w-2 h-2 rounded-full bg-zinc-700 hover:bg-purple-500 transition duration-300 cursor-pointer')
                     .attr('data-index', i);
                 $('#testimonialDots').append(dot);
             }
@@ -87,13 +87,24 @@ $(document).ready(function () {
             $.each(testimonials, function(index, testimonial) {
                 // Cria o card do depoimento
                 var card = $('<div></div>', {
-                    "class": "testimonial-card snap-center scroll-reveal",
+                    "class": "testimonial-card bg-zinc-900/80 rounded-lg p-6 backdrop-blur-sm border border-zinc-800 hover:border-purple-500 transition-all duration-300 snap-center scroll-reveal",
                     "data-index": index
                 });
                 
                 // Conteúdo do depoimento
                 var content = $('<div></div>', {
-                    "class": "testimonial-content"
+                    "class": "relative"
+                });
+                
+                // Aspas decorativas
+                var quotes = $('<div></div>', {
+                    "class": "absolute -top-2 -left-2 text-6xl text-purple-500/10 font-serif",
+                    "text": "\""
+                });
+                
+                // Container do conteúdo principal
+                var mainContent = $('<div></div>', {
+                    "class": "relative z-10"
                 });
                 
                 // Texto do depoimento com truncamento para 10 linhas
@@ -102,12 +113,12 @@ $(document).ready(function () {
                 });
                 
                 var text = $('<p></p>', {
-                    "class": "testimonial-text truncated",
+                    "class": "testimonial-text truncated text-gray-300 text-sm mb-6",
                     text: testimonial.text
                 });
                 
                 var expandButton = $('<button></button>', {
-                    "class": "expand-testimonial hidden text-yellow-500 mt-2 text-sm hover:text-yellow-400 transition duration-300 focus:outline-none",
+                    "class": "expand-testimonial hidden text-purple-500 mt-2 text-sm hover:text-purple-400 transition duration-300 focus:outline-none",
                     text: "Ler mais"
                 });
                 
@@ -115,38 +126,39 @@ $(document).ready(function () {
                 
                 // Informações do autor
                 var author = $('<div></div>', {
-                    "class": "testimonial-author"
+                    "class": "flex items-center"
                 });
                 
                 // Avatar do autor
                 var avatar = $('<img>', {
                     src: testimonial.avatar,
                     alt: testimonial.name,
-                    "class": "author-avatar",
+                    "class": "w-12 h-12 rounded-full object-cover border-2 border-purple-500",
                     onerror: "this.src='media/images/default-avatar.jpg'" // Fallback para imagem padrão
                 });
                 
                 // Informações do autor
                 var authorInfo = $('<div></div>', {
-                    "class": "author-info"
+                    "class": "ml-4"
                 });
                 
                 // Nome do autor
-                var authorName = $('<div></div>', {
-                    "class": "author-name",
+                var authorName = $('<h4></h4>', {
+                    "class": "font-medium text-purple-500",
                     text: testimonial.name
                 });
                 
                 // Cargo/Empresa do autor
-                var authorTitle = $('<div></div>', {
-                    "class": "author-title",
+                var authorTitle = $('<p></p>', {
+                    "class": "text-sm text-gray-400",
                     text: testimonial.position
                 });
                 
                 // Montagem do card
                 authorInfo.append(authorName, authorTitle);
                 author.append(avatar, authorInfo);
-                content.append(textContainer, author);
+                mainContent.append(textContainer, author);
+                content.append(quotes, mainContent);
                 card.append(content);
                 
                 // Adicionar o card ao carrossel
@@ -166,8 +178,8 @@ $(document).ready(function () {
             
             // Garantir que a primeira bolinha esteja selecionada no carregamento
             setTimeout(function() {
-                $('#testimonialDots div').removeClass('bg-yellow-500 active-dot').addClass('bg-zinc-700');
-                $('#testimonialDots div[data-index="0"]').removeClass('bg-zinc-700').addClass('bg-yellow-500 active-dot');
+                $('#testimonialDots div').removeClass('bg-purple-500 active-dot').addClass('bg-zinc-700');
+                $('#testimonialDots div[data-index="0"]').removeClass('bg-zinc-700').addClass('bg-purple-500 active-dot');
                 
                 // Ativa as animações de scroll após adicionar os depoimentos
                 activateScrollAnimations();
@@ -203,7 +215,7 @@ $(document).ready(function () {
             
         }).fail(function(jqXHR, textStatus, errorThrown) {
             console.error("Erro ao carregar os depoimentos:", textStatus, errorThrown);
-            $("#testimonialsCarousel").html('<div class="text-center text-yellow-500 w-full py-8">Erro ao carregar depoimentos. Por favor, tente novamente mais tarde.</div>');
+            $("#testimonialsCarousel").html('<div class="text-center text-purple-500 w-full py-8">Erro ao carregar depoimentos. Por favor, tente novamente mais tarde.</div>');
         });
     }
     
@@ -380,8 +392,8 @@ $(document).ready(function () {
         // Certifique-se de que o índice não ultrapasse o número de bolinhas visíveis
         activeIndex = Math.min(activeIndex, visibleDots - 1);
         
-        $('#testimonialDots div').removeClass('bg-yellow-500 active-dot').addClass('bg-zinc-700');
-        $('#testimonialDots div[data-index="' + activeIndex + '"]').removeClass('bg-zinc-700').addClass('bg-yellow-500 active-dot');
+        $('#testimonialDots div').removeClass('bg-purple-500 active-dot').addClass('bg-zinc-700');
+        $('#testimonialDots div[data-index="' + activeIndex + '"]').removeClass('bg-zinc-700').addClass('bg-purple-500 active-dot');
     }
 
     // Função que configura animações de scroll para elementos da página
@@ -448,7 +460,7 @@ $(document).ready(function () {
             var visibleDots = Math.max(1, projects.length - 1); // No mínimo 1 bolinha
             for (var i = 0; i < visibleDots; i++) {
                 var dot = $('<div></div>')
-                    .addClass('w-2 h-2 rounded-full bg-zinc-700 hover:bg-yellow-500 transition duration-300 cursor-pointer')
+                    .addClass('w-2 h-2 rounded-full bg-zinc-700 hover:bg-purple-500 transition duration-300 cursor-pointer')
                     .attr('data-index', i);
                 $('#carouselDots').append(dot);
             }
@@ -459,7 +471,7 @@ $(document).ready(function () {
             $.each(projects, function(index, project) {
                 // Cria o card do projeto com os atributos para a modal
                 var card = $('<div></div>', {
-                    "class": "project-card bg-zinc-900 rounded-xl cursor-pointer min-w-[320px] max-w-[320px] flex flex-col snap-center border border-transparent hover:border-yellow-500/30 scroll-reveal",
+                    "class": "project-card bg-zinc-900 rounded-xl cursor-pointer min-w-[320px] max-w-[320px] flex flex-col snap-center border border-transparent hover:border-purple-500/30 scroll-reveal",
                     "data-title": project.title,
                     "data-video": project.video,
                     "data-description": project.description,
@@ -490,7 +502,7 @@ $(document).ready(function () {
                 
                 // Cria o título do projeto
                 var title = $('<h3></h3>', {
-                    "class": "text-xl font-bold mb-2 text-yellow-500",
+                    "class": "text-xl font-bold mb-2 text-purple-500",
                     text: project.title
                 });
                 
@@ -502,7 +514,7 @@ $(document).ready(function () {
                 
                 // Adiciona botão "Ver mais"
                 var viewMore = $('<button></button>', {
-                    "class": "mt-4 bg-transparent border border-yellow-500 text-yellow-500 px-4 py-2 rounded-lg text-sm font-medium hover:bg-yellow-500 hover:text-zinc-900 transition-colors duration-300 inline-flex items-center justify-center group",
+                    "class": "mt-4 bg-transparent border border-purple-500 text-purple-500 px-4 py-2 rounded-lg text-sm font-medium hover:bg-purple-500 hover:text-zinc-900 transition-colors duration-300 inline-flex items-center justify-center group",
                     text: "Ver detalhes"
                 });
                 
@@ -532,8 +544,8 @@ $(document).ready(function () {
             // Garantir que a primeira bolinha esteja selecionada no carregamento
             setTimeout(function() {
                 // Definir o primeiro indicador como ativo
-                $('#carouselDots div').removeClass('bg-yellow-500 active-dot').addClass('bg-zinc-700');
-                $('#carouselDots div[data-index="0"]').removeClass('bg-zinc-700').addClass('bg-yellow-500 active-dot');
+                $('#carouselDots div').removeClass('bg-purple-500 active-dot').addClass('bg-zinc-700');
+                $('#carouselDots div[data-index="0"]').removeClass('bg-zinc-700').addClass('bg-purple-500 active-dot');
                 
                 // Ativa as animações de scroll após adicionar os cards
                 activateScrollAnimations();
@@ -541,7 +553,7 @@ $(document).ready(function () {
             
         }).fail(function(jqXHR, textStatus, errorThrown) {
             console.error("Erro ao carregar os projetos:", textStatus, errorThrown);
-            $("#projectsCarousel").html('<div class="text-center text-yellow-500 w-full py-8">Erro ao carregar projetos. Por favor, tente novamente mais tarde.</div>');
+            $("#projectsCarousel").html('<div class="text-center text-purple-500 w-full py-8">Erro ao carregar projetos. Por favor, tente novamente mais tarde.</div>');
         });
     }
     
@@ -607,8 +619,8 @@ $(document).ready(function () {
         // Certifique-se de que o índice não ultrapasse o número de bolinhas visíveis
         activeIndex = Math.min(activeIndex, visibleDots - 1);
         
-        $('#carouselDots div').removeClass('bg-yellow-500 active-dot').addClass('bg-zinc-700');
-        $('#carouselDots div[data-index="' + activeIndex + '"]').removeClass('bg-zinc-700').addClass('bg-yellow-500 active-dot');
+        $('#carouselDots div').removeClass('bg-purple-500 active-dot').addClass('bg-zinc-700');
+        $('#carouselDots div[data-index="' + activeIndex + '"]').removeClass('bg-zinc-700').addClass('bg-purple-500 active-dot');
     }
     
     // Configura os controles do carrossel
@@ -749,7 +761,7 @@ $(document).ready(function () {
             if (technologies && technologies.length > 0) {
                 $.each(technologies, function(i, tech) {
                     var techBadge = $('<span></span>', {
-                        "class": "px-2 py-1 bg-zinc-800 text-yellow-500 rounded text-xs mr-2 mb-2",
+                        "class": "px-2 py-1 bg-zinc-800 text-purple-500 rounded text-xs mr-2 mb-2",
                         text: tech
                     });
                     $("#modalTechnologies").append(techBadge);

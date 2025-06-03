@@ -1,25 +1,25 @@
 <!-- Seção de Depoimentos e Recomendações -->
-<section class="py-12 w-full">
-  <div class="container mx-auto px-4 content-container">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-12 text-yellow-500 scroll-reveal">Depoimentos</h2>
-    <p class="text-gray-300 text-center mb-8 md:mb-12 max-w-2xl mx-auto text-sm md:text-base scroll-reveal delay-100">Confira o que clientes, colegas e parceiros dizem sobre minha atuação profissional e projetos desenvolvidos.</p>
+<section class="py-12 md:py-16 bg-zinc-950">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-12 text-purple-500">Depoimentos</h2>
+    <p class="text-gray-400 text-center mb-8 md:mb-12 max-w-2xl mx-auto text-sm md:text-base scroll-reveal delay-100">O que as pessoas dizem sobre meu trabalho e profissionalismo.</p>
     
-    <!-- Carrossel de Depoimentos -->
-    <div class="relative max-w-full md:max-w-4xl mx-auto md:px-14">
+    <!-- Carrossel de depoimentos -->
+    <div class="relative max-w-full md:max-w-5xl mx-auto md:px-14">
       <!-- Botão anterior (oculto em dispositivos móveis) -->
-      <button id="prevTestimonial" class="hidden md:block absolute -left-2 top-1/2 transform -translate-y-1/2 bg-zinc-900/80 hover:bg-zinc-800 text-yellow-500 rounded-full p-3 z-10 transition duration-300 opacity-70 hover:opacity-100 focus:outline-none shadow-lg backdrop-blur-sm">
+      <button id="prevTestimonial" class="hidden md:block absolute -left-2 top-1/2 transform -translate-y-1/2 bg-zinc-900 hover:bg-zinc-800 text-purple-500 rounded-full p-3 z-10 transition duration-300 opacity-70 hover:opacity-100 focus:outline-none shadow-lg">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
         </svg>
       </button>
       
-      <!-- Container do carrossel sem padding lateral (já adicionado no container pai) -->
+      <!-- Container do carrossel -->
       <div id="testimonialsCarousel" class="flex overflow-x-auto gap-4 md:gap-8 py-4 md:py-8 hide-scrollbar scroll-smooth snap-x">
-        <!-- Os depoimentos serão inseridos aqui dinamicamente -->
+        <!-- Os cards de depoimentos serão inseridos aqui dinamicamente via JavaScript -->
       </div>
       
       <!-- Botão próximo (oculto em dispositivos móveis) -->
-      <button id="nextTestimonial" class="hidden md:block absolute -right-2 top-1/2 transform -translate-y-1/2 bg-zinc-900/80 hover:bg-zinc-800 text-yellow-500 rounded-full p-3 z-10 transition duration-300 opacity-70 hover:opacity-100 focus:outline-none shadow-lg backdrop-blur-sm">
+      <button id="nextTestimonial" class="hidden md:block absolute -right-2 top-1/2 transform -translate-y-1/2 bg-zinc-900 hover:bg-zinc-800 text-purple-500 rounded-full p-3 z-10 transition duration-300 opacity-70 hover:opacity-100 focus:outline-none shadow-lg">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
         </svg>
@@ -36,140 +36,74 @@
 </section>
 
 <style>
-  /* Estilos para os cards de depoimentos */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .snap-x {
+    scroll-snap-type: x mandatory;
+  }
+  .snap-center {
+    scroll-snap-align: center;
+  }
+  
+  /* Animações e efeitos para o carrossel */
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .active-dot {
+    animation: pulse 2s infinite;
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  /* Melhorias visuais para os cards */
   .testimonial-card {
-    background-color: rgba(24, 24, 27, 0.8);
-    backdrop-filter: blur(4px);
-    border-radius: 1rem;
-    padding: 2rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid transparent;
-    min-width: 320px;
-    max-width: 320px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
   
   .testimonial-card:hover {
-    box-shadow: 0 10px 15px -3px rgba(234, 179, 8, 0.2), 0 4px 6px -2px rgba(234, 179, 8, 0.1);
+    box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.2), 0 4px 6px -2px rgba(168, 85, 247, 0.1);
     transform: translateY(-5px);
-    border-color: rgba(234, 179, 8, 0.3);
   }
   
-  .testimonial-card::before {
-    content: '"';
-    position: absolute;
-    top: 0.5rem;
-    left: 1rem;
-    font-size: 5rem;
-    line-height: 1;
-    color: rgba(234, 179, 8, 0.1);
-    font-family: Georgia, serif;
-  }
-  
-  .testimonial-content {
-    flex-grow: 1;
-    position: relative;
-    z-index: 1;
-  }
-  
-  .testimonial-author {
-    display: flex;
-    align-items: center;
-    margin-top: auto;
-  }
-  
-  .author-avatar {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 9999px;
-    object-fit: cover;
-    border: 2px solid #eab308;
-  }
-  
-  .author-info {
-    margin-left: 1rem;
-  }
-  
-  .author-name {
-    font-weight: 600;
-    color: #eab308;
-  }
-  
-  .author-title {
-    font-size: 0.875rem;
-    color: #a1a1aa;
-  }
-  
-  /* Animação para as aspas */
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
-  
-  .testimonial-card:hover::before {
-    animation: float 3s ease-in-out infinite;
-    color: rgba(234, 179, 8, 0.2);
-  }
-  
-  /* Hide scrollbar */
-  .hide-scrollbar {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;     /* Firefox */
-  }
-  
-  .hide-scrollbar::-webkit-scrollbar {
-    display: none;             /* Chrome, Safari, Opera */
-  }
-  
-  /* Estilos para truncamento de texto */
-  .testimonial-text-container {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.5rem;
-  }
-  
+  /* Truncamento do texto */
   .testimonial-text.truncated {
     display: -webkit-box;
     -webkit-line-clamp: 10;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    max-height: calc(1.6em * 10); /* 10 linhas de altura */
-    transition: max-height 0.3s ease;
   }
   
-  .testimonial-text {
-    color: #d4d4d8;
-    font-style: italic;
-    line-height: 1.6;
-  }
-  
-  .expand-testimonial.hidden {
-    display: none;
-  }
-  
-  .expand-testimonial {
-    align-self: flex-start;
-    font-weight: 500;
-    cursor: pointer;
-  }
-
-  /* Estilos responsivos para os cards */
+  /* Cards responsivos */
   @media (max-width: 768px) {
     .testimonial-card {
       min-width: 280px;
       max-width: 280px;
-      padding: 1.5rem;
-    }
-    
-    .testimonial-card::before {
-      font-size: 4rem;
     }
   }
   
@@ -177,7 +111,57 @@
     .testimonial-card {
       min-width: 260px;
       max-width: 260px;
-      padding: 1.25rem;
     }
+  }
+  
+  /* Animações de Scroll */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .scroll-reveal.animated {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Diferentes direções de animação */
+  .scroll-reveal.from-left {
+    transform: translateX(-50px);
+  }
+  
+  .scroll-reveal.from-right {
+    transform: translateX(50px);
+  }
+  
+  .scroll-reveal.from-left.animated,
+  .scroll-reveal.from-right.animated {
+    transform: translateX(0);
+  }
+  
+  /* Diferentes tempos de animação */
+  .scroll-reveal.delay-100 { transition-delay: 100ms; }
+  .scroll-reveal.delay-200 { transition-delay: 200ms; }
+  .scroll-reveal.delay-300 { transition-delay: 300ms; }
+  .scroll-reveal.delay-400 { transition-delay: 400ms; }
+  .scroll-reveal.delay-500 { transition-delay: 500ms; }
+  
+  /* Animação de zoom */
+  .scroll-reveal.zoom {
+    transform: scale(0.8);
+  }
+  
+  .scroll-reveal.zoom.animated {
+    transform: scale(1);
+  }
+  
+  /* Animação de rotação */
+  .scroll-reveal.rotate {
+    transform: rotate(-5deg);
+  }
+  
+  .scroll-reveal.rotate.animated {
+    transform: rotate(0);
   }
 </style> 

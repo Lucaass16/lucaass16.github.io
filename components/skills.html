@@ -1,5 +1,83 @@
-<section id="skills" class="text-center py-12">
-<h2 class="text-4xl font-bold text-center mb-12 text-yellow-500">Habilidades</h2>
-<p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto scroll-reveal delay-100">Confira algumas das principais tecnologias que tenho conhecimento e experiência.</p>
-<div id="skillsContainer" class="flex flex-wrap gap-8 lg:px-64 md:px-32 px-16 justify-center"></div>
+<section class="py-12 md:py-16 bg-zinc-900">
+  <div class="container mx-auto px-4">
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-12 text-purple-500">Minhas Habilidades</h2>
+    <p class="text-gray-400 text-center mb-8 md:mb-12 max-w-2xl mx-auto text-sm md:text-base scroll-reveal delay-100">Tecnologias e ferramentas que utilizo no desenvolvimento dos meus projetos.</p>
+    
+    <!-- Grid de habilidades -->
+    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4 md:gap-6 max-w-5xl mx-auto">
+      <!-- Os cards de habilidades serão inseridos aqui dinamicamente via JavaScript -->
+    </div>
+  </div>
 </section>
+
+<style>
+  /* Animações e efeitos para os cards de habilidades */
+  .skill-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .skill-card:hover {
+    box-shadow: 0 10px 15px -3px rgba(168, 85, 247, 0.2), 0 4px 6px -2px rgba(168, 85, 247, 0.1);
+    transform: translateY(-5px);
+  }
+  
+  .skill-card i {
+    transition: transform 0.5s ease;
+  }
+  
+  .skill-card:hover i {
+    transform: scale(1.1);
+  }
+  
+  /* Animações de Scroll */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  .scroll-reveal.animated {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Diferentes direções de animação */
+  .scroll-reveal.from-left {
+    transform: translateX(-50px);
+  }
+  
+  .scroll-reveal.from-right {
+    transform: translateX(50px);
+  }
+  
+  .scroll-reveal.from-left.animated,
+  .scroll-reveal.from-right.animated {
+    transform: translateX(0);
+  }
+  
+  /* Diferentes tempos de animação */
+  .scroll-reveal.delay-100 { transition-delay: 100ms; }
+  .scroll-reveal.delay-200 { transition-delay: 200ms; }
+  .scroll-reveal.delay-300 { transition-delay: 300ms; }
+  .scroll-reveal.delay-400 { transition-delay: 400ms; }
+  .scroll-reveal.delay-500 { transition-delay: 500ms; }
+  
+  /* Animação de zoom */
+  .scroll-reveal.zoom {
+    transform: scale(0.8);
+  }
+  
+  .scroll-reveal.zoom.animated {
+    transform: scale(1);
+  }
+  
+  /* Animação de rotação */
+  .scroll-reveal.rotate {
+    transform: rotate(-5deg);
+  }
+  
+  .scroll-reveal.rotate.animated {
+    transform: rotate(0);
+  }
+</style>
