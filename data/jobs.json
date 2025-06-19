@@ -1,0 +1,29 @@
+[
+    {
+      "title": "Desenvolvedor Backend",
+      "company": "BNE - Banco Nacional de Empregos",
+      "period": "Setembro/2024 - Presente",
+      "location": "Remoto",
+      "description": "Desenvolvimento de Web APIs e automações com Selenium usando C#/.NET. Integrações com ElasticSearch e APIs do Google Gemini. Aplicações de Machine Learning com Python, seguindo os padrões DDD e MVC.",
+      "technologies": ["C#", ".NET", "Selenium", "ElasticSearch", "Google Gemini API", "Python", "Machine Learning", "DDD", "MVC"],
+      "current": true
+    },
+    {
+      "title": "Suporte Técnico",
+      "company": "SEDEF - Secretaria Estadual de Desenvolvimento Social e Família",
+      "period": "Abril/2023 - Agosto/2024",
+      "location": "Curitiba, PR",
+      "description": "Atendimento a problemas de hardware, software e rede, garantindo a continuidade operacional. Desenvolvimento de soluções inteligentes para otimizar processos da equipe de TI, utilizando Python.",
+      "technologies": ["Python", "Hardware", "Software", "Redes", "Suporte Técnico", "Automação"],
+      "current": false
+    },
+    {
+      "title": "Estudante de Técnico em Informática",
+      "company": "Instituto Federal do Paraná - IFPR",
+      "period": "2022 - 2025",
+      "location": "Colombo, PR",
+      "description": "Formação técnica focada em desenvolvimento de software, com ênfase em Machine Learning e Computer Vision. Desenvolvimento do projeto Safe Gate certificado pelo IF Colombo.",
+      "technologies": ["Python", "C++", "Java", "Machine Learning", "Computer Vision", "YOLO", "ESP32", "IoT"],
+      "current": true
+    }
+]

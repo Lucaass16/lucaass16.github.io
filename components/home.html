@@ -24,12 +24,12 @@
                     </h2>
                 </div>
                 <p class="text-xl md:text-2xl text-gray-300 mt-4 md:mt-6 mb-8 md:mb-10">
-                    Olá 👋 Sou um desenvolvedor apaixonado por tecnologia e inovação, 
-                    focado em criar soluções que fazem a diferença.
+                    Desenvolvedor apaixonado por <strong>Machine Learning</strong> e tecnologia, focado em criar soluções inteligentes que fazem a diferença no mundo.
                 </p>
                 <div class="space-x-4 mt-8">
                     <button onclick="baixarArquivo()"
-                        class="bg-purple-500 text-black py-2 px-6 rounded-md hover:bg-purple-600 transition-all">
+                        class="bg-purple-500 text-black py-2 px-6 rounded-md hover:bg-purple-600 transition-all inline-flex items-center justify-center gap-2 font-medium font-bold">
+                        <span><img class="w-4 h-4" src="../media/icon/download.svg" alt=""></span>
                         Baixar CV
                     </button>
                     <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });"
@@ -40,39 +40,47 @@
             </div>
             
             <!-- Terminal -->
-            <div class="w-full md:w-1/2 max-w-lg mt-8 md:mt-0">
+            <div class="w-full max-w-lg mx-auto lg:mx-0">
                 <div class="bg-zinc-900 rounded-lg shadow-lg overflow-hidden border border-zinc-700">
                     <!-- Barra de título do terminal -->
                     <div class="bg-zinc-800 px-4 py-2 flex items-center">
                         <div class="flex space-x-2">
                             <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-purple-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
                             <div class="w-3 h-3 rounded-full bg-green-500"></div>
                         </div>
-                        <div class="text-gray-400 text-sm mx-auto">
+                        <div class="text-gray-400 text-sm mx-auto flex items-center gap-2">
+                            <img src="../media/icon/terminal.svg" alt="" class="w-4 h-4">
                             lucas@dev:~
                         </div>
                     </div>
                     
                     <!-- Conteúdo do terminal -->
-                    <div class="text-left p-4 font-mono text-sm text-green-400 h-64 overflow-y-auto terminal-content">
+                    <div class="text-left p-4 font-mono text-sm text-green-400 h-80 overflow-y-auto terminal-content">
                         <div class="terminal-line">
-                            <span class="text-purple-500">$</span> <span class="text-blue-400">cat</span> info.txt
+                            <span class="text-purple-500">$</span> <span class="text-blue-400">cat</span> <span class="text-blue-400">info.txt</span>
                         </div>
-                        <div class="terminal-output mt-2">
-                            <div>Seja bem-vindo ao meu portfólio!</div>
-                            <div class="mt-2">Sou especialista em:</div>
-                            <div class="ml-4 mt-1">• Desenvolvimento Back End</div>
-                            <div class="ml-4">• Machine Learning Engineering</div>
-                            <div class="ml-4">• Desenvolvimento de Software</div>
-                            <div class="ml-4">• Análise de Dados</div>
-                            <div class="mt-2">Explore meu site para conhecer meus projetos!</div>
+                        <div class="terminal-output mt-2 text-white">
+                            <div class="ml-4">Especialista em Machine Learning & Backend</div>
+                            <div class="ml-4">4º ano - Técnico em Informática IFPR</div>
+                            <div class="ml-4">Desenvolvedor Backend na BNE</div>
+                            <div class="ml-4">Pesquisador em IA & Computer Vision</div>
                         </div>
                         <div class="terminal-line mt-3">
-                            <span class="text-purple-500">$</span> <span class="text-blue-400">ls</span> projetos/
+                            <span class="text-purple-500">$</span> <span class="text-blue-400">ls skills/</span>
                         </div>
-                        <div class="terminal-output mt-1">
-                            portfolio/  projetos-pessoais/  trabalhos-academicos/
+                        <div class="terminal-output mt-1 text-white">
+                            <div>machine_learning/  backend_dev/  computer_vision/</div>
+                            <div>python/  csharp/  dotnet/  pytorch/  tensorflow/</div>
+                        </div>
+                        <div class="terminal-line mt-3">
+                            <span class="text-purple-500">$</span> <span class="text-blue-400">python -c "import this"</span>
+                        </div>
+                        <div class="terminal-output mt-1 text-white">
+                            <div class="text-yellow-600">The Zen of Python, by Tim Peters</div>
+                            <div>Beautiful is better than ugly.</div>
+                            <div>Simple is better than complex.</div>
+                            <div>...</div>
                         </div>
                         <div class="terminal-line mt-3">
                             <span class="text-purple-500">$</span> <span class="terminal-cursor animate-pulse">_</span>

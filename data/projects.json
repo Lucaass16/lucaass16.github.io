@@ -1,26 +1,13 @@
 [
   {
-    "title": "Safe Gate",
-    "image": "media/images/xysbio.png",
-    "video": "media/videos/xysbio.webm",
-    "description": "Desenvolvimento de um sistema baseado em Machine Learning e IoT para prevenir acidentes com portões automáticos. Utilização do algoritmo YOLO para detecção em tempo real de pessoas, animais e veículos por meio de câmeras acopladas a um ESP32. O sistema analisa continuamente a área ao redor do portão interrompendo sua trajetória caso haja risco de colisão.",
-    "link": "https://xys.bio/",
-    "technologies": ["Java", "Spring", "TypeScript", "React", "Next.js", "PostgreSQL", "Docker", "AWS", "Nginx", "Cloudflare"]
-  },
-  {
-    "title": "Portfólio Pessoal",
-    "image": "media/images/portfolio.png",
-    "video": "media/videos/portfolio.webm",
-    "description": "Desenvolvimento do meu portfólio pessoal utilizando tecnologias web modernas. O site apresenta uma interface responsiva e interativa, com animações suaves e design moderno.",
-    "link": "https://lucaass16.github.io",
-    "technologies": ["HTML", "CSS", "JavaScript", "Tailwind CSS", "Git", "GitHub"]
-  },
-  {
-    "title": "Projetos Pessoais",
-    "image": "media/images/projects.png",
-    "video": "media/videos/projects.webm",
-    "description": "Coleção de projetos pessoais desenvolvidos durante minha jornada de aprendizado em programação. Inclui aplicações web, scripts de automação e pequenos jogos.",
-    "link": "https://github.com/lucaass16",
-    "technologies": ["Python", "JavaScript", "HTML", "CSS", "MySQL", "SQLite"]
+  "title": "Safe Gate",
+  "subtitle": "Sistema Inteligente de Segurança para Portões",
+  "description": "Sistema baseado em Machine Learning e IoT para prevenir acidentes com portões automáticos. Utiliza o algoritmo YOLO para detecção em tempo real de pessoas, animais e veículos através de câmeras acopladas a um ESP32. O sistema analisa continuamente a área ao redor do portão, interrompendo sua trajetória caso haja risco de colisão.",
+  "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80",
+  "technologies": ["Python", "YOLO", "Computer Vision", "ESP32", "IoT", "Machine Learning", "OpenCV"],
+  "github": "#",
+  "demo": "#",
+  "certified": true,
+  "highlight": true
   }
 ]

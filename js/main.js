@@ -1,4 +1,71 @@
 $(document).ready(function () {
+    function createExperienceCard(job) {
+        const card = document.createElement('div');
+
+        // Cria os spans de tecnologia dinamicamente
+        const technologiesHTML = job.technologies.map(tech =>
+            `<span class="inline-flex rounded-full text-purple-300 bg-purple-500/20 px-3 py-1 border-purple-500/30 border">${tech}</span>`
+        ).join('');
+
+        card.innerHTML = `
+            <div class="relative flex items-start gap-8 min-h-300">
+                <div class="relative z-10 flex items-center justify-center w-16 h-16 rounded-full border-4
+                            ${job.current
+                                ? 'bg-purple-500 border-purple-400 shadow-lg shadow-purple-500/50'
+                                : 'bg-zinc-800 border-zinc-700'
+                            }">
+                    <img src="../media/icon/briefcase-business.svg" class="!h-8 !w-8" alt="Ícone de maleta">
+                </div>
+
+                <div
+                    class="project-card flex-1 bg-zinc-900 rounded-xl p-8 border border-zinc-700 hover:border-purple-500/50 transition-all duration-300 hover:scale-[1.02]">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-white mb-2">${job.title}</h3>
+                            <h4 class="text-purple-400 text-xl font-bold">${job.company}</h4>
+                        </div>
+                        ${job.current ? `
+                        <span
+                            class="inline-flex rounded-full text-purple-300 bg-purple-500/20 px-3 py-1 border-purple-500/30 border">
+                            Atual
+                        </span>` : ''}
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-4 text-gray-300">
+                        <div class="flex items-center gap-4">
+                            <img src="../media/icon/calendar.svg" class="!h-8 !w-8 inline-block" alt="Ícone de calendário">
+                            <span>${job.period}</span>
+                        </div>
+                    </div>
+                    <p>
+                        ${job.description}
+                    </p>
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        ${technologiesHTML}
+                    </div>
+                </div>
+            </div>
+        `;
+
+        return card;
+    }
+
+    async function initJobsCards(){
+        try{
+            const response = await fetch("data/jobs.json");
+            const jobs = await response.json();
+
+            const jobSection = document.getElementById("jobs")
+
+            jobs.forEach(j => {
+                const card = createExperienceCard(j);
+                jobSection.appendChild(card);
+            });
+        } catch (error) {
+        console.error('Erro ao carregar as experiências:', error);
+    }
+    }
+
     // Carrega os componentes estáticos
     $("#home").load("components/home.html", function() {
         console.log("Componente home carregado");
@@ -7,6 +74,10 @@ $(document).ready(function () {
     });
     $("#header").load("components/header.html");
     $("#about").load("components/about.html");
+    $("#experience").load("components/experience.html", function() {
+        console.log("Componente de experiência carregado.");
+        initJobsCards();
+    })
     $("#parallax").load("components/parallax.html", function() {
         console.log("Componente parallax carregado");
         // Inicializa o efeito parallax
@@ -14,23 +85,11 @@ $(document).ready(function () {
         // Ativa as animações de elementos com scroll
         activateScrollAnimations();
     });
-    $("#contact").load("components/contact.html");
-    $("#footer").load("components/footer.html");
-    
-    // Carrega a seção de depoimentos
-    $("#testimonials").load("components/testimonials.html", function() {
-        console.log("Componente de depoimentos carregado");
-        initializeTestimonials();
-    });
-    
-    // Configurar animações de scroll para todos os elementos
-    setupScrollAnimations();
-    
     // Carrega a seção de projetos e inicializa tudo após o carregamento
     $("#projects").load("components/projects.html", function() {
         console.log("Componente de projetos carregado");
         
-        // Carrega os projetos no carrossel
+        // Carrega os projetos como cards estáticos
         initializeProjects();
         
         // Configura o fechamento da modal
@@ -45,6 +104,18 @@ $(document).ready(function () {
             $("#modalVideo")[0].pause();
         });
     });
+    $("#contact").load("components/contact.html");
+    $("#footer").load("components/footer.html");
+    
+    // Carrega a seção de depoimentos
+    $("#testimonials").load("components/testimonials.html", function() {
+        console.log("Componente de depoimentos carregado");
+        initializeTestimonials();
+    });
+    
+    // Configurar animações de scroll para todos os elementos
+    setupScrollAnimations();
+    
 
     // Carrega as habilidades e, após o componente ser carregado, insere os itens dinamicamente
     $("#skills").load("components/skills.html", function () {
@@ -448,292 +519,135 @@ $(document).ready(function () {
         }
     }
 
-    // Função que inicializa o carrossel de projetos
+    // Função para criar o HTML de um card de projeto
+    function createProjectCard(project) {
+        // Cria o card do projeto com os atributos para a modal
+        var card = $('<div></div>', {
+            "class": "group relative bg-zinc-900 rounded-2xl overflow-hidden border transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl border-purple-500/50 shadow-lg shadow-purple-500/20",
+            "data-title": project.title,
+            "data-video": project.video || '', // Adiciona video para a modal
+            "data-description": project.description,
+            "data-link": project.link || "#",
+            "data-technologies": JSON.stringify(project.technologies || []),
+            "data-index": project.index // Use o index do JSON
+        });
+
+        // Adiciona tags de destaque e certificado se existirem
+        let tagsHtml = '';
+        if (project.certified) {
+            tagsHtml += `<div class="absolute top-4 right-4 bg-purple-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                            Certificado
+                          </div>`;
+        }
+        if (project.highlight) {
+            tagsHtml += `<div class="absolute bg-yellow-500 top-4 left-4 text-white font-bold px-3 py-1 rounded-full text-sm">
+                            Destaque
+                          </div>`;
+        }
+        
+        // Cria o container da imagem para dar mais destaque
+        var imgContainer = $('<div></div>', {
+            "class": "relative w-full h-64 overflow-hidden rounded-t-xl"
+        });
+        
+        // Adiciona os gradientes e tags sobre a imagem
+        imgContainer.append(`
+            <div class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/20 to-transparent"></div>
+            ${tagsHtml}
+        `);
+
+        // Cria a imagem do projeto com classe ajustada
+        var img = $('<img>', {
+            src: project.image,
+            alt: project.title,
+            "class": "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        });
+        
+        // Adiciona a imagem ao container
+        imgContainer.prepend(img); // Prepend para a imagem ficar por baixo das tags
+
+        // Cria o container para o conteúdo do card
+        var contentContainer = $('<div></div>', {
+            "class": "p-5 flex flex-col flex-grow"
+        });
+        
+        // Cria o título do projeto
+        var title = $('<h3></h3>', {
+            "class": "text-xl font-bold mb-2 text-purple-500",
+            text: project.title
+        });
+
+        // Cria o subtítulo do projeto (se existir)
+        var subtitle = '';
+        if (project.subtitle) {
+            subtitle = $('<h4></h4>', {
+                "class": "font-medium text-purple-400 text-lg mb-3",
+                text: project.subtitle
+            });
+        }
+        
+        // Cria um resumo curto do projeto
+        var shortDesc = $('<p></p>', {
+            "class": "text-gray-400 text-sm flex-grow leading-relaxed",
+            text: project.description.substring(0, 150) + (project.description.length > 150 ? "..." : "")
+        });
+        
+        // Adiciona botão "Ver mais"
+        var viewMore = $('<button></button>', {
+            "class": "mt-4 bg-transparent border border-purple-500 text-purple-500 px-4 py-2 rounded-lg text-sm font-medium hover:bg-purple-500 hover:text-zinc-900 transition-colors duration-300 inline-flex items-center justify-center group",
+            text: "Ver detalhes"
+        });
+
+        var badges = $('<div></div>', {
+            "class": "flex flex-wrap gap-2 mb-4 mt-4"
+        });
+        project.technologies.forEach(t => {
+            var badge = $('<span></span>', {
+                "class": "px-3 py-1 bg-purple-500/10 text-purple-300 rounded-full text-sm border border-purple-500/20",
+                text: t
+            });
+
+            badges.append(badge);
+        })
+        
+        // Adiciona ícone ao botão com animação
+        var icon = $('<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>');
+        viewMore.append(icon);
+        
+        // Adiciona os elementos ao container de conteúdo
+        contentContainer.append(title, subtitle, shortDesc, badges, viewMore);
+        
+        // Junta os elementos e retorna o card
+        card.append(imgContainer, contentContainer);
+        return card;
+    }
+
+    // Função que inicializa a exibição de projetos em grid
     function initializeProjects() {
         console.log("Inicializando projetos");
         
         $.getJSON('data/projects.json', function(projects) {
             console.log("Dados JSON carregados:", projects.length + " projetos");
             
-            // Adicionar os indicadores de navegação (um a menos do que o total de projetos)
-            $('#carouselDots').empty();
-            var visibleDots = Math.max(1, projects.length - 1); // No mínimo 1 bolinha
-            for (var i = 0; i < visibleDots; i++) {
-                var dot = $('<div></div>')
-                    .addClass('w-2 h-2 rounded-full bg-zinc-700 hover:bg-purple-500 transition duration-300 cursor-pointer')
-                    .attr('data-index', i);
-                $('#carouselDots').append(dot);
-            }
-            
-            // Limpar o carrossel antes de adicionar os novos cards
-            $("#projectsCarousel").empty();
+            // Limpa o grid antes de adicionar os novos cards
+            $("#projectsGrid").empty();
             
             $.each(projects, function(index, project) {
-                // Cria o card do projeto com os atributos para a modal
-                var card = $('<div></div>', {
-                    "class": "project-card bg-zinc-900 rounded-xl cursor-pointer min-w-[320px] max-w-[320px] flex flex-col snap-center border border-transparent hover:border-purple-500/30 scroll-reveal",
-                    "data-title": project.title,
-                    "data-video": project.video,
-                    "data-description": project.description,
-                    "data-link": project.link || "#",
-                    "data-technologies": JSON.stringify(project.technologies || []),
-                    "data-index": index
-                });
-                
-                // Cria o container da imagem para dar mais destaque
-                var imgContainer = $('<div></div>', {
-                    "class": "w-full overflow-hidden rounded-t-xl"
-                });
-                
-                // Cria a imagem do projeto com classe ajustada
-                var img = $('<img>', {
-                    src: project.image,
-                    alt: project.title,
-                    "class": "w-full h-[180px] object-cover transition-transform duration-500 hover:scale-105"
-                });
-                
-                // Adiciona a imagem ao container
-                imgContainer.append(img);
-                
-                // Cria o container para o conteúdo do card
-                var contentContainer = $('<div></div>', {
-                    "class": "p-5 flex flex-col flex-grow"
-                });
-                
-                // Cria o título do projeto
-                var title = $('<h3></h3>', {
-                    "class": "text-xl font-bold mb-2 text-purple-500",
-                    text: project.title
-                });
-                
-                // Cria um resumo curto do projeto
-                var shortDesc = $('<p></p>', {
-                    "class": "text-gray-400 text-sm flex-grow leading-relaxed",
-                    text: project.description.substring(0, 80) + "..."
-                });
-                
-                // Adiciona botão "Ver mais"
-                var viewMore = $('<button></button>', {
-                    "class": "mt-4 bg-transparent border border-purple-500 text-purple-500 px-4 py-2 rounded-lg text-sm font-medium hover:bg-purple-500 hover:text-zinc-900 transition-colors duration-300 inline-flex items-center justify-center group",
-                    text: "Ver detalhes"
-                });
-                
-                // Adiciona ícone ao botão com animação
-                var icon = $('<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 20 20" fill="currentColor"><path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/><path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/></svg>');
-                viewMore.append(icon);
-                
-                // Adiciona os elementos ao container de conteúdo
-                contentContainer.append(title, shortDesc, viewMore);
-                
-                // Junta os elementos e adiciona ao carrossel
-                card.append(imgContainer, contentContainer);
-                $("#projectsCarousel").append(card);
-                
+                // Adiciona o índice ao objeto project para uso posterior
+                project.index = index; 
+                var card = createProjectCard(project);
+                $("#projectsGrid").append(card);
                 console.log("Card adicionado:", project.title);
             });
             
-            // Configura os controles do carrossel após a criação dos cards
-            setupCarouselControls();
-            
-            // Calcular a largura total do carrossel
-            updateCarouselWidth();
-            
-            // Atualizar quando a janela for redimensionada
-            $(window).on('resize', updateCarouselWidth);
-            
-            // Garantir que a primeira bolinha esteja selecionada no carregamento
-            setTimeout(function() {
-                // Definir o primeiro indicador como ativo
-                $('#carouselDots div').removeClass('bg-purple-500 active-dot').addClass('bg-zinc-700');
-                $('#carouselDots div[data-index="0"]').removeClass('bg-zinc-700').addClass('bg-purple-500 active-dot');
-                
-                // Ativa as animações de scroll após adicionar os cards
-                activateScrollAnimations();
-            }, 100);
+            // Ativa as animações de scroll após adicionar os cards
+            activateScrollAnimations();
             
         }).fail(function(jqXHR, textStatus, errorThrown) {
             console.error("Erro ao carregar os projetos:", textStatus, errorThrown);
-            $("#projectsCarousel").html('<div class="text-center text-purple-500 w-full py-8">Erro ao carregar projetos. Por favor, tente novamente mais tarde.</div>');
-        });
-    }
-    
-    // Função para atualizar a largura total do carrossel
-    function updateCarouselWidth() {
-        var totalCards = $('.project-card').length;
-        var cardWidth = 320; // Largura do card
-        var gap = 32; // Espaçamento entre cards
-        
-        // Certifique-se de que o último card também pode ser visualizado corretamente
-        if (totalCards > 0) {
-            var lastCardPosition = (totalCards - 1) * (cardWidth + gap);
-            var carouselWidth = $('#projectsCarousel').width();
-            
-            // Armazene esses valores para uso posterior
-            $('#projectsCarousel').data('lastCardPosition', lastCardPosition);
-            $('#projectsCarousel').data('maxScroll', lastCardPosition);
-            $('#projectsCarousel').data('cardWidth', cardWidth + gap);
-            $('#projectsCarousel').data('totalCards', totalCards);
-            $('#projectsCarousel').data('visibleDots', Math.max(1, totalCards - 1));
-        }
-    }
-    
-    // Função para configurar o observador de interseção para os cards do carrossel
-    function setupIntersectionObserver() {
-        if ('IntersectionObserver' in window) {
-            var options = {
-                root: document.getElementById('projectsCarousel'),
-                rootMargin: '0px',
-                threshold: 0.5 // Ajustado para ser mais sensível
-            };
-            
-            var observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        var index = $(entry.target).data('index');
-                        var visibleDots = $('#projectsCarousel').data('visibleDots') || $('.project-card').length - 1;
-                        
-                        // Ajusta o índice para que o último card mapeie para o penúltimo indicador
-                        var totalCards = $('.project-card').length;
-                        if (index >= totalCards - 1) {
-                            index = visibleDots - 1; // O último card mapeia para o último indicador visível
-                        }
-                        
-                        updateCarouselDots(index);
-                    }
-                });
-            }, options);
-            
-            // Observe todos os cards
-            $('.project-card').each(function() {
-                observer.observe(this);
-            });
-        }
-    }
-    
-    // Atualiza os indicadores de forma mais visual
-    function updateCarouselDots(activeIndex) {
-        if (activeIndex === undefined || activeIndex === null) return;
-        
-        var visibleDots = $('#projectsCarousel').data('visibleDots') || $('.project-card').length - 1;
-        
-        // Certifique-se de que o índice não ultrapasse o número de bolinhas visíveis
-        activeIndex = Math.min(activeIndex, visibleDots - 1);
-        
-        $('#carouselDots div').removeClass('bg-purple-500 active-dot').addClass('bg-zinc-700');
-        $('#carouselDots div[data-index="' + activeIndex + '"]').removeClass('bg-zinc-700').addClass('bg-purple-500 active-dot');
-    }
-    
-    // Configura os controles do carrossel
-    function setupCarouselControls() {
-        console.log("Configurando controles do carrossel");
-        
-        // Adiciona o observador de interseção para os cards do carrossel
-        setupIntersectionObserver();
-        
-        // Atualizar os indicadores ao rolar o carrossel manualmente
-        $('#projectsCarousel').on('scroll', function() {
-            // Usamos um debounce para não chamar a função várias vezes durante o scroll
-            clearTimeout($.data(this, 'scrollTimer'));
-            $.data(this, 'scrollTimer', setTimeout(function() {
-                var scrollPos = $('#projectsCarousel').scrollLeft();
-                var cardWidth = $('#projectsCarousel').data('cardWidth') || 352; // Width + gap
-                var totalCards = $('#projectsCarousel').data('totalCards') || $('.project-card').length;
-                var visibleDots = $('#projectsCarousel').data('visibleDots') || totalCards - 1;
-                
-                // Cálculo mais preciso do índice atual
-                var currentIndex = Math.round(scrollPos / cardWidth);
-                
-                // Ajuste para mapear o último card para o último indicador visível
-                if (currentIndex >= totalCards - 1) {
-                    currentIndex = visibleDots - 1;
-                }
-                
-                // Garantir que o índice esteja dentro dos limites
-                currentIndex = Math.max(0, Math.min(currentIndex, visibleDots - 1));
-                
-                // Atualizar pontos de navegação
-                updateCarouselDots(currentIndex);
-            }, 100));
-        });
-        
-        // Navegar ao clicar nos pontos indicadores
-        $(document).on('click', '#carouselDots div', function() {
-            var index = $(this).data('index');
-            var cardWidth = $('#projectsCarousel').data('cardWidth') || 352; // Width + gap
-            var totalCards = $('#projectsCarousel').data('totalCards') || $('.project-card').length;
-            var visibleDots = $('#projectsCarousel').data('visibleDots') || totalCards - 1;
-            
-            // Se for o último indicador, rolar para o último card
-            if (index === visibleDots - 1 && totalCards > visibleDots) {
-                index = totalCards - 1;
-            }
-            
-            var scrollTo = index * cardWidth;
-            
-            // Animar a rolagem com efeito de ease
-            $('#projectsCarousel').animate({
-                scrollLeft: scrollTo
-            }, 500, 'swing');
-            
-            // Atualizar os indicadores
-            updateCarouselDots(Math.min(index, visibleDots - 1));
+            $("#projectsGrid").html('<div class="text-center text-purple-500 w-full py-8">Erro ao carregar projetos. Por favor, tente novamente mais tarde.</div>');
         });
 
-        // Adicionar os handlers dos botões de navegação:
-        
-        // Botão anterior
-        $(document).on("click", "#prev", function() {
-            console.log("Botão anterior clicado");
-            var scrollPos = $("#projectsCarousel").scrollLeft();
-            var cardWidth = $('#projectsCarousel').data('cardWidth') || 352; // Width + gap
-            var scrollTo = Math.max(0, scrollPos - cardWidth);
-            
-            $("#projectsCarousel").animate({ scrollLeft: scrollTo }, 500, 'swing');
-            
-            // Atualizar os indicadores
-            var newIndex = Math.floor(scrollTo / cardWidth);
-            var visibleDots = $('#projectsCarousel').data('visibleDots') || $('.project-card').length - 1;
-            
-            // Ajustar índice para as bolinhas visíveis
-            newIndex = Math.min(newIndex, visibleDots - 1);
-            updateCarouselDots(newIndex);
-        });
-        
-        // Botão próximo
-        $(document).on("click", "#next", function() {
-            console.log("Botão próximo clicado");
-            var scrollPos = $("#projectsCarousel").scrollLeft();
-            var cardWidth = $('#projectsCarousel').data('cardWidth') || 352; // Width + gap
-            var maxScroll = $('#projectsCarousel').data('maxScroll');
-            var totalCards = $('#projectsCarousel').data('totalCards') || $('.project-card').length;
-            var visibleDots = $('#projectsCarousel').data('visibleDots') || totalCards - 1;
-            
-            var scrollTo = scrollPos + cardWidth;
-            
-            // Garantir que não ultrapasse o limite máximo
-            if (maxScroll && scrollTo > maxScroll) {
-                scrollTo = maxScroll;
-                
-                // Se estamos rolando para o último card, use o último indicador visível
-                updateCarouselDots(visibleDots - 1);
-            } else {
-                // Calcular o novo índice com base no scroll atualizado
-                var newIndex = Math.round(scrollTo / cardWidth);
-                
-                // Ajustar para mapear corretamente aos indicadores visíveis
-                if (newIndex >= totalCards - 1) {
-                    newIndex = visibleDots - 1;
-                }
-                
-                // Garantir que o índice esteja dentro dos limites
-                newIndex = Math.max(0, Math.min(newIndex, visibleDots - 1));
-                
-                updateCarouselDots(newIndex);
-            }
-            
-            $("#projectsCarousel").animate({ scrollLeft: scrollTo }, 500, 'swing');
-        });
-        
         // Abrir a modal ao clicar em um card de projeto
         $(document).on("click", ".project-card", function() {
             var title = $(this).data("title");
@@ -750,12 +664,16 @@ $(document).ready(function () {
             $("#modalLink").attr("href", link);
             
             // Atualiza a fonte do vídeo e recarrega o elemento
-            var videoType = videoPath.endsWith('.webm') ? 'video/webm' : 'video/mp4';
-            
-            // Encontre a source correspondente ao tipo de vídeo e atualize
-            $("#modalVideo source[type='" + videoType + "']").attr("src", videoPath);
-            $("#modalVideo")[0].load();
-            
+            if (videoPath) {
+                var videoType = videoPath.endsWith('.webm') ? 'video/webm' : 'video/mp4';
+                $("#modalVideo").html(`<source src="${videoPath}" type="${videoType}">`);
+                $("#modalVideo")[0].load();
+                $("#modalVideo").removeClass("hidden");
+            } else {
+                $("#modalVideo").addClass("hidden");
+                $("#modalVideo").empty(); // Remove any existing sources
+            }
+
             // Limpa e adiciona as tecnologias
             $("#modalTechnologies").empty();
             if (technologies && technologies.length > 0) {
@@ -787,9 +705,9 @@ $(document).ready(function () {
         
         const professions = [
             "Back End Developer",
-            "Software Engineer",
-            "Full Stack Developer", 
-            "DevOps Engineer"
+            "Software Developer",
+            "Machine Learning Engineer",
+            "Data Analytics",
         ];
         
         let currentProfession = 0;
