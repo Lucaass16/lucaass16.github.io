@@ -1,13 +1,26 @@
 [
   {
-  "title": "Safe Gate",
+  "title": "ZeloPet",
   "subtitle": "Sistema Inteligente de Segurança para Portões",
-  "description": "Sistema baseado em Machine Learning e IoT para prevenir acidentes com portões automáticos. Utiliza o algoritmo YOLO para detecção em tempo real de pessoas, animais e veículos através de câmeras acopladas a um ESP32. O sistema analisa continuamente a área ao redor do portão, interrompendo sua trajetória caso haja risco de colisão.",
-  "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80",
-  "technologies": ["Python", "YOLO", "Computer Vision", "ESP32", "IoT", "Machine Learning", "OpenCV"],
+  "description": "Sistema completo de segurança para portões automáticos com IoT, app mobile e API centralizada. Utiliza ESP32 para monitorar o estado do portão e identificar pets próximos através de Computer Vision com YOLO. O app Android em Java permite controle e monitoramento remoto, enquanto a API em .NET gerencia toda a comunicação entre dispositivos IoT e aplicação mobile.",
+  "image": "/media/images/zelopet.png",
+  "detailsImage": "/media/images/zelopet-screens.png",
+  "technologies": ["C#", ".NET", "Java", "Android", "Python", "YOLO", "Computer Vision", "ESP32", "IoT", "OpenCV", "API REST"],
   "github": "#",
   "demo": "#",
   "certified": true,
   "highlight": true
+  },
+  {
+  "title": "GarIA",
+  "subtitle": "Classificador Inteligente de Resíduos Recicláveis",
+  "description": "Sistema de Computer Vision para identificação e classificação automática de lixo reciclável. Utilizando YOLO, o modelo detecta e categoriza resíduos em quatro classes: Plástico, Vidro, Papel e Metal. Disponibiliza uma API REST desenvolvida em Flask para facilitar a integração do modelo em aplicações de coleta seletiva e gestão de resíduos.",
+  "image": "/media/images/garia.png",
+  "detailsImage": "/media/images/plastic-cup-monster-prediction.jpg",
+  "technologies": ["Python", "YOLO", "Flask", "Computer Vision", "OpenCV", "API REST", "Deep Learning"],
+  "github": "https://github.com/Lucaass16/GarIA/tree/feat/v0-0-1",
+  "demo": "#",
+  "certified": false,
+  "highlight": false
   }
 ]

@@ -5,7 +5,7 @@
       "period": "Setembro/2024 - Presente",
       "location": "Hibrido - Colombo, PR",
       "description": "Desenvolvimento backend com .NET e Python. Em .NET: desenvolvimento de automações e web crawling com Selenium para coleta e processamento de dados, integrações com ElasticSearch e APIs do Google Gemini. Em Python: desenvolvimento e manutenção de sistema ATS (Applicant Tracking System) utilizando Flask, com foco em gerenciamento de candidaturas e processos seletivos. Aplicação de práticas DDD e MVC.",
-      "technologies": ["C#", ".NET", "Python", "Flask", "Selenium", "Web Crawling", "Automação", "ATS", "ElasticSearch", "Google Gemini API", "Machine Learning", "DDD", "MVC"],
+      "technologies": ["C#", ".NET", "Python", "Flask", "Selenium", "Web Crawling", "Automação", "ATS", "ElasticSearch", "Google Gemini API", "DDD", "MVC"],
       "current": true
     },
     {
@@ -31,8 +31,8 @@
       "company": "Instituto Federal do Paraná - IFPR",
       "period": "2022 - 2025",
       "location": "Colombo, PR",
-      "description": "Formação técnica focada em desenvolvimento de software, com ênfase em Machine Learning e Computer Vision. Desenvolvimento do projeto Safe Gate certificado pelo IF Colombo.",
-      "technologies": ["Python", "C++", "Java", "Machine Learning", "Computer Vision", "YOLO", "ESP32", "IoT"],
+      "description": "Formação técnica focada em desenvolvimento de software e programação. Desenvolvimento do projeto Safe Gate de Computer Vision certificado pelo IF Colombo.",
+      "technologies": ["Python", "C++", "Java", "Computer Vision", "YOLO", "ESP32", "IoT", "Algoritmos"],
       "current": true
     }
 ]

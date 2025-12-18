@@ -37,45 +37,65 @@ function createProjectCard(project) {
 // Função para abrir o modal do projeto
 function openProjectModal(project) {
   const modal = document.getElementById('projectModal');
-  const video = document.getElementById('modalVideo');
+  const image = document.getElementById('modalImage');
+  const imageContainer = document.getElementById('modalImageContainer');
   const title = document.getElementById('modalTitle');
   const description = document.getElementById('modalDescription');
   const technologies = document.getElementById('modalTechnologies');
-  const link = document.getElementById('modalLink');
+  const githubLink = document.getElementById('modalGithub');
+  const demoLink = document.getElementById('modalDemo');
   
   // Atualizar o conteúdo do modal
-  video.innerHTML = `
-    <source src="${project.video}" type="video/webm">
-    <source src="${project.video}" type="video/mp4">
-  `;
-  video.load();
-  video.play();
-  
   title.textContent = project.title;
   description.textContent = project.description;
   
+  // Mostrar/ocultar imagem se existir detailsImage
+  if (project.detailsImage) {
+    image.src = project.detailsImage;
+    image.alt = project.title;
+    imageContainer.classList.remove('hidden');
+  } else {
+    imageContainer.classList.add('hidden');
+  }
+  
+  // Atualizar tecnologias
   technologies.innerHTML = project.technologies.map(tech => `
-    <span class="px-3 py-1 text-sm rounded-full ${tech.color}">${tech.name}</span>
+    <span class="px-3 py-1 text-sm rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">${tech}</span>
   `).join('');
   
-  link.href = project.link;
+  // Atualizar links
+  githubLink.href = project.github || '#';
+  demoLink.href = project.demo || '#';
+  
+  // Ocultar botões se não tiverem links
+  if (!project.github || project.github === '#') {
+    githubLink.classList.add('opacity-50', 'pointer-events-none');
+  } else {
+    githubLink.classList.remove('opacity-50', 'pointer-events-none');
+  }
+  
+  if (!project.demo || project.demo === '#') {
+    demoLink.classList.add('opacity-50', 'pointer-events-none');
+  } else {
+    demoLink.classList.remove('opacity-50', 'pointer-events-none');
+  }
   
   // Mostrar o modal com animação
   modal.classList.remove('hidden');
   modal.classList.add('animate-fadeIn');
   
-  // Adicionar evento de clique para fechar o modal
-  const closeButton = document.getElementById('closeModal');
-  const modalBg = modal.querySelector('.modal-bg');
+  // Prevenir scroll do body quando modal está aberto
+  document.body.style.overflow = 'hidden';
+}
+
+// Função para fechar o modal
+function closeProjectModal() {
+  const modal = document.getElementById('projectModal');
+  modal.classList.add('hidden');
+  modal.classList.remove('animate-fadeIn');
   
-  function closeModal() {
-    video.pause();
-    modal.classList.add('hidden');
-    modal.classList.remove('animate-fadeIn');
-  }
-  
-  closeButton.addEventListener('click', closeModal);
-  modalBg.addEventListener('click', closeModal);
+  // Restaurar scroll do body
+  document.body.style.overflow = 'auto';
 }
 
 // Função para criar os indicadores do carrossel

@@ -656,6 +656,11 @@ $(document).ready(function () {
             "class": "mt-4 bg-transparent border border-purple-500 text-purple-500 px-4 py-2 rounded-lg text-sm font-medium hover:bg-purple-500 hover:text-zinc-900 transition-colors duration-300 inline-flex items-center justify-center group",
             text: "Ver detalhes"
         });
+        
+        viewMore.on('click', function(e) {
+            e.stopPropagation();
+            openProjectModal(project);
+        });
 
         var badges = $('<div></div>', {
             "class": "flex flex-wrap gap-2 mb-4 mt-4"
@@ -765,8 +770,8 @@ $(document).ready(function () {
         const professions = [
             "Back End Developer",
             "Software Developer",
-            "Machine Learning Engineer",
-            "Data Analytics",
+            "Full Stack Developer",
+            "Python Developer",
         ];
         
         let currentProfession = 0;
