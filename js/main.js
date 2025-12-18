@@ -107,35 +107,92 @@ $(document).ready(function () {
     $("#contact").load("components/contact.html");
     $("#footer").load("components/footer.html");
     
-    // Carrega a seção de depoimentos
-    $("#testimonials").load("components/testimonials.html", function() {
-        console.log("Componente de depoimentos carregado");
-        initializeTestimonials();
-    });
-    
     // Configurar animações de scroll para todos os elementos
     setupScrollAnimations();
     
 
     // Carrega as habilidades e, após o componente ser carregado, insere os itens dinamicamente
     $("#skills").load("components/skills.html", function () {
-        $.getJSON('data/skills.json', function (skills) {
-            $.each(skills, function (index, skill) {
-                var skillHtml = `
-            <div class="bg-zinc-900 w-28 h-28 rounded-lg flex flex-col items-center justify-center transform transition duration-300 hover:scale-105 hover:border hover:border-purple-500 border border-transparent scroll-reveal">              
-                <i class="${skill.icon} text-6xl text-purple-500"></i>
-                <p class="text-lg mt-2 text-purple-500">${skill.name}</p>
-            </div>
-          `;
-                $('#skillsContainer').append(skillHtml);
-            });
-            
-            // Ativa as animações de scroll após adicionar as habilidades
-            activateScrollAnimations();
-        });
+        console.log("Componente de skills carregado");
+        initSkillsGrid();
     });
 
-    // Função que inicializa o carrossel de depoimentos
+    // Função para criar um card de habilidade
+    function createSkillCard(skill) {
+        var card = $('<div></div>', {
+            "class": "skill-card bg-zinc-900/80 p-4 rounded-lg backdrop-blur-sm border border-zinc-800 hover:border-purple-500 transition-all duration-300 flex flex-col items-center justify-center gap-2 scroll-reveal"
+        });
+        
+        var icon = $('<i></i>', {
+            "class": skill.icon + " text-5xl md:text-6xl text-purple-500"
+        });
+        
+        var name = $('<span></span>', {
+            "class": "text-xs md:text-sm text-gray-300 text-center",
+            text: skill.name
+        });
+        
+        card.append(icon, name);
+        return card;
+    }
+
+    // Função para inicializar o grid de habilidades
+    function initSkillsGrid() {
+        console.log("Inicializando skills");
+        
+        $.getJSON('data/skills.json', function(skills) {
+            console.log("Dados JSON carregados:", skills.length + " skills");
+            
+            // Limpa as categorias antes de adicionar os cards
+            $("#languages").empty();
+            $("#backend").empty();
+            $("#frontend").empty();
+            $("#databases").empty();
+            $("#data-automation").empty();
+            $("#devops").empty();
+            
+            // Distribui as skills nas categorias
+            $.each(skills, function(index, skill) {
+                var card = createSkillCard(skill);
+                
+                // Adiciona o card na categoria correspondente
+                switch(skill.category) {
+                    case 'languages':
+                        $("#languages").append(card);
+                        break;
+                    case 'backend':
+                        $("#backend").append(card);
+                        break;
+                    case 'frontend':
+                        $("#frontend").append(card);
+                        break;
+                    case 'databases':
+                        $("#databases").append(card);
+                        break;
+                    case 'data-automation':
+                        $("#data-automation").append(card);
+                        break;
+                    case 'devops':
+                        $("#devops").append(card);
+                        break;
+                    default:
+                        console.warn("Categoria não encontrada para:", skill.name);
+                }
+                
+                console.log("Skill adicionada:", skill.name, "na categoria", skill.category);
+            });
+            
+            // Ativa as animações de scroll após adicionar as skills
+            activateScrollAnimations();
+            
+        }).fail(function(jqXHR, textStatus, errorThrown) {
+            console.error("Erro ao carregar as skills:", textStatus, errorThrown);
+            $("#languages").html('<div class="text-center text-purple-500 w-full py-8">Erro ao carregar habilidades. Por favor, tente novamente mais tarde.</div>');
+        });
+    }
+
+    /*
+    // REMOVED: Função que inicializa o carrossel de depoimentos
     function initializeTestimonials() {
         console.log("Inicializando depoimentos");
         
@@ -466,6 +523,8 @@ $(document).ready(function () {
         $('#testimonialDots div').removeClass('bg-purple-500 active-dot').addClass('bg-zinc-700');
         $('#testimonialDots div[data-index="' + activeIndex + '"]').removeClass('bg-zinc-700').addClass('bg-purple-500 active-dot');
     }
+    */
+    // END REMOVED TESTIMONIALS FUNCTIONS
 
     // Função que configura animações de scroll para elementos da página
     function setupScrollAnimations() {

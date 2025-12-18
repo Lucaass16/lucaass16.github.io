@@ -1,20 +1,29 @@
 [
     {
-      "title": "Desenvolvedor Backend",
+      "title": "Desenvolvedor Backend .NET & Python",
       "company": "BNE - Banco Nacional de Empregos",
       "period": "Setembro/2024 - Presente",
-      "location": "Remoto",
-      "description": "Desenvolvimento de Web APIs e automações com Selenium usando C#/.NET. Integrações com ElasticSearch e APIs do Google Gemini. Aplicações de Machine Learning com Python, seguindo os padrões DDD e MVC.",
-      "technologies": ["C#", ".NET", "Selenium", "ElasticSearch", "Google Gemini API", "Python", "Machine Learning", "DDD", "MVC"],
+      "location": "Hibrido - Colombo, PR",
+      "description": "Desenvolvimento backend com .NET e Python. Em .NET: desenvolvimento de automações e web crawling com Selenium para coleta e processamento de dados, integrações com ElasticSearch e APIs do Google Gemini. Em Python: desenvolvimento e manutenção de sistema ATS (Applicant Tracking System) utilizando Flask, com foco em gerenciamento de candidaturas e processos seletivos. Aplicação de práticas DDD e MVC.",
+      "technologies": ["C#", ".NET", "Python", "Flask", "Selenium", "Web Crawling", "Automação", "ATS", "ElasticSearch", "Google Gemini API", "Machine Learning", "DDD", "MVC"],
       "current": true
     },
     {
-      "title": "Suporte Técnico",
+      "title": "Desenvolvedor Backend Java",
+      "company": "xys.bio",
+      "period": "Junho/2025",
+      "location": "Remoto",
+      "description": "Desenvolvimento e implementação da infraestrutura do servidor backend para plataforma de personalização de perfis. Criação da base para integração de chatbot inteligente utilizando LLM (Large Language Model) com Deepseek, proporcionando interações automatizadas e personalizadas para os usuários.",
+      "technologies": ["Java", "Spring", "Backend", "LLM", "Deepseek", "Chatbot", "API REST"],
+      "current": false
+    },
+    {
+      "title": "Suporte Técnico & Desenvolvedor de Automações",
       "company": "SEDEF - Secretaria Estadual de Desenvolvimento Social e Família",
       "period": "Abril/2023 - Agosto/2024",
       "location": "Curitiba, PR",
-      "description": "Atendimento a problemas de hardware, software e rede, garantindo a continuidade operacional. Desenvolvimento de soluções inteligentes para otimizar processos da equipe de TI, utilizando Python.",
-      "technologies": ["Python", "Hardware", "Software", "Redes", "Suporte Técnico", "Automação"],
+      "description": "Atendimento a problemas de hardware, software e rede. Desenvolvimento de automações em Python para otimização de processos: sistema de gerenciamento de empréstimo de equipamentos, automação de planilhas com integração de dados, scripts para manutenção preventiva e relatórios automatizados. Redução significativa no tempo de processamento de tarefas repetitivas da equipe de TI.",
+      "technologies": ["Python", "Pandas", "Openpyxl", "Automação de Planilhas", "Excel", "Scripts", "Hardware", "Software", "Redes", "Suporte Técnico"],
       "current": false
     },
     {
