@@ -2,151 +2,193 @@
   {
     "name": "Python",
     "icon": "devicon-python-plain",
-    "category": "languages"
+    "category": "languages",
+    "level": "main"
   },
   {
     "name": "C#",
     "icon": "devicon-csharp-plain",
-    "category": "languages"
+    "category": "languages",
+    "level": "main"
   },
   {
     "name": "Java",
     "icon": "devicon-java-plain",
-    "category": "languages"
+    "category": "languages",
+    "level": "additional"
   },
   {
     "name": "TypeScript",
     "icon": "devicon-typescript-plain",
-    "category": "languages"
+    "category": "languages",
+    "level": "additional"
   },
   {
     "name": "Javascript",
     "icon": "devicon-javascript-plain",
-    "category": "languages"
+    "category": "languages",
+    "level": "additional"
   },
   {
     "name": "DotNet",
     "icon": "devicon-dot-net-plain",
-    "category": "backend"
+    "category": "backend",
+    "level": "main"
   },
   {
     "name": "Flask",
     "icon": "devicon-flask-plain",
-    "category": "backend"
+    "category": "backend",
+    "level": "main"
   },
   {
     "name": "FastAPI",
     "icon": "devicon-fastapi-plain",
-    "category": "backend"
+    "category": "backend",
+    "level": "main"
   },
   {
     "name": "Spring",
     "icon": "devicon-spring-plain",
-    "category": "backend"
+    "category": "backend",
+    "level": "additional"
   },
   {
     "name": "React",
     "icon": "devicon-react-plain",
-    "category": "frontend"
+    "category": "frontend",
+    "level": "additional"
   },
   {
     "name": "Next.js",
     "icon": "devicon-nextjs-plain",
-    "category": "frontend"
+    "category": "frontend",
+    "level": "additional"
   },
   {
     "name": "HTML",
     "icon": "devicon-html5-plain",
-    "category": "frontend"
+    "category": "frontend",
+    "level": "additional"
   },
   {
     "name": "CSS",
     "icon": "devicon-css3-plain",
-    "category": "frontend"
+    "category": "frontend",
+    "level": "additional"
   },
   {
     "name": "Tailwind",
     "icon": "devicon-tailwindcss-original",
-    "category": "frontend"
+    "category": "frontend",
+    "level": "additional"
   },
   {
     "name": "jQuery",
     "icon": "devicon-jquery-plain",
-    "category": "frontend"
+    "category": "frontend",
+    "level": "additional"
   },
   {
     "name": "PostgreSQL",
     "icon": "devicon-postgresql-plain",
-    "category": "databases"
+    "category": "databases",
+    "level": "main"
   },
   {
     "name": "SQL Server",
     "icon": "devicon-microsoftsqlserver-plain",
-    "category": "databases"
+    "category": "databases",
+    "level": "main"
   },
   {
     "name": "MySQL",
     "icon": "devicon-mysql-plain",
-    "category": "databases"
+    "category": "databases",
+    "level": "main"
   },
   {
     "name": "SQLite",
     "icon": "devicon-sqlite-plain",
-    "category": "databases"
+    "category": "databases",
+    "level": "main"
   },
   {
     "name": "Redis",
     "icon": "devicon-redis-plain",
-    "category": "databases"
+    "category": "databases",
+    "level": "main"
+  },
+  {
+    "name": "RabbitMQ",
+    "icon": "devicon-rabbitmq-plain",
+    "category": "databases",
+    "level": "main"
+  },
+  {
+    "name": "Elasticsearch",
+    "icon": "devicon-elasticsearch-plain",
+    "category": "databases",
+    "level": "main"
   },
   {
     "name": "Pandas",
     "icon": "devicon-pandas-plain",
-    "category": "data-automation"
+    "category": "data-automation",
+    "level": "additional"
   },
   {
     "name": "NumPy",
     "icon": "devicon-numpy-plain",
-    "category": "data-automation"
+    "category": "data-automation",
+    "level": "additional"
   },
   {
     "name": "Selenium",
     "icon": "devicon-selenium-plain",
-    "category": "data-automation"
+    "category": "data-automation",
+    "level": "additional"
   },
   {
     "name": "Jupyter",
     "icon": "devicon-jupyter-plain",
-    "category": "data-automation"
+    "category": "data-automation",
+    "level": "additional"
   },
   {
     "name": "Docker",
     "icon": "devicon-docker-plain",
-    "category": "devops"
+    "category": "devops",
+    "level": "main"
   },
   {
     "name": "Git",
     "icon": "devicon-git-plain",
-    "category": "devops"
+    "category": "devops",
+    "level": "main"
   },
   {
     "name": "GitHub",
     "icon": "devicon-github-plain",
-    "category": "devops"
+    "category": "devops",
+    "level": "additional"
   },
   {
     "name": "Linux",
     "icon": "devicon-linux-plain",
-    "category": "devops"
+    "category": "devops",
+    "level": "additional"
   },
   {
     "name": "Azure",
     "icon": "devicon-azure-plain",
-    "category": "devops"
+    "category": "devops",
+    "level": "main"
   },
   {
     "name": "AWS",
     "icon": "devicon-amazonwebservices-plain",
-    "category": "devops"
+    "category": "devops",
+    "level": "additional"
   }
 ]

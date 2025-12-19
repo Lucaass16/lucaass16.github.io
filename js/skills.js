@@ -15,7 +15,12 @@ function createSkillCard(skill) {
 async function initSkillsGrid() {
   try {
     const response = await fetch('data/skills.json');
-    const skills = await response.json();
+    const skills = await response.json().sort((a, b) =>{     
+                                        const isAMain = a.level === 'main' ? 0 : 1;
+                                        const isBMain = b.level === 'main' ? 0 : 1;
+                                        return isAMain - isBMain;});
+    
+    console.log(skills);
     
     const grid = document.querySelector('.grid');
     

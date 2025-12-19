@@ -120,8 +120,20 @@ $(document).ready(function () {
     // Função para criar um card de habilidade
     function createSkillCard(skill) {
         var card = $('<div></div>', {
-            "class": "skill-card bg-zinc-900/80 p-4 rounded-lg backdrop-blur-sm border border-zinc-800 hover:border-purple-500 transition-all duration-300 flex flex-col items-center justify-center gap-2 scroll-reveal"
+            "class": "skill-card bg-zinc-900/80 p-4 rounded-lg backdrop-blur-sm border border-zinc-800 hover:border-purple-500 transition-all duration-300 flex flex-col items-center justify-center gap-2 scroll-reveal relative"
         });
+        
+        // Adiciona tag de nível se existir
+        if (skill.level) {
+            var levelTag = $('<span></span>', {
+                "class": "absolute top-1 right-1 text-[9px] px-1.5 py-0.5 rounded-full font-medium " + 
+                         (skill.level === 'main' ? 
+                          'bg-purple-500/20 text-purple-400 border border-purple-500/30' : 
+                          'bg-zinc-700/50 text-zinc-400 border border-zinc-600/30'),
+                text: skill.level === 'main' ? 'Principal' : 'Apoio'
+            });
+            card.append(levelTag);
+        }
         
         var icon = $('<i></i>', {
             "class": skill.icon + " text-5xl md:text-6xl text-purple-500"
@@ -770,7 +782,7 @@ $(document).ready(function () {
         const professions = [
             "Back End Developer",
             "Software Developer",
-            "Full Stack Developer",
+            ".NET Developer",
             "Python Developer",
         ];
         
