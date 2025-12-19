@@ -6,7 +6,8 @@
       "location": "Hibrido - Colombo, PR",
       "description": "Desenvolvimento backend com .NET e Python. Em .NET: desenvolvimento de automações e web crawling com Selenium para coleta e processamento de dados, integrações com ElasticSearch e APIs do Google Gemini. Em Python: desenvolvimento e manutenção de sistema ATS (Applicant Tracking System) utilizando Flask, com foco em gerenciamento de candidaturas e processos seletivos. Aplicação de práticas DDD e MVC.",
       "technologies": ["C#", ".NET", "Python", "Flask", "Selenium", "Web Crawling", "Automação", "ATS", "ElasticSearch", "Google Gemini API", "DDD", "MVC"],
-      "current": true
+      "current": true,
+      "type": "work"
     },
     {
       "title": "Desenvolvedor Backend Java",
@@ -15,7 +16,8 @@
       "location": "Remoto",
       "description": "Desenvolvimento e implementação da infraestrutura do servidor backend para plataforma de personalização de perfis. Criação da base para integração de chatbot inteligente utilizando LLM (Large Language Model) com Deepseek, proporcionando interações automatizadas e personalizadas para os usuários.",
       "technologies": ["Java", "Spring", "Backend", "LLM", "Deepseek", "Chatbot", "API REST"],
-      "current": false
+      "current": false,
+      "type": "work"
     },
     {
       "title": "Suporte Técnico & Desenvolvedor de Automações",
@@ -24,15 +26,17 @@
       "location": "Curitiba, PR",
       "description": "Atendimento a problemas de hardware, software e rede. Desenvolvimento de automações em Python para otimização de processos: sistema de gerenciamento de empréstimo de equipamentos, automação de planilhas com integração de dados, scripts para manutenção preventiva e relatórios automatizados. Redução significativa no tempo de processamento de tarefas repetitivas da equipe de TI.",
       "technologies": ["Python", "Pandas", "Openpyxl", "Automação de Planilhas", "Excel", "Scripts", "Hardware", "Software", "Redes", "Suporte Técnico"],
-      "current": false
+      "current": false,
+      "type": "work"
     },
     {
-      "title": "Estudante de Técnico em Informática",
+      "title": "Técnico em Informática",
       "company": "Instituto Federal do Paraná - IFPR",
       "period": "2022 - 2025",
       "location": "Colombo, PR",
       "description": "Formação técnica focada em desenvolvimento de software e programação. Desenvolvimento do projeto Safe Gate de Computer Vision certificado pelo IF Colombo.",
       "technologies": ["Python", "C++", "Java", "Computer Vision", "YOLO", "ESP32", "IoT", "Algoritmos"],
-      "current": true
+      "current": false,
+      "type": "education"
     }
 ]
