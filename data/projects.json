@@ -1,26 +1,50 @@
 [
   {
-  "title": "ZeloPet",
-  "subtitle": "Sistema Inteligente de Segurança para Portões",
-  "description": "Sistema completo de segurança para portões automáticos com IoT, app mobile e API centralizada. Utiliza ESP32 para monitorar o estado do portão e identificar pets próximos através de Computer Vision com YOLO. O app Android em Java permite controle e monitoramento remoto, enquanto a API em .NET gerencia toda a comunicação entre dispositivos IoT e aplicação mobile.",
-  "image": "/media/images/zelopet.png",
-  "detailsImage": "/media/images/zelopet-screens.png",
-  "technologies": ["C#", ".NET", "Java", "Android", "Python", "YOLO", "Computer Vision", "ESP32", "IoT", "OpenCV", "API REST"],
-  "github": "#",
-  "demo": "#",
-  "certified": true,
-  "highlight": true
+    "title": "AkWeatherDashboard",
+    "subtitle": "Dashboard Meteorológico com Clean Architecture",
+    "description": "Dashboard meteorológico em .NET 9 com Blazor Server, Clean Architecture e DDD. Sincronização automática com OpenWeatherMap via BackgroundService a cada 15 minutos, persistência com EF Core e SQLite, MVVM no Blazor e Value Objects com validação de domínio. Testes unitários com xUnit, NSubstitute e FluentAssertions. Deploy via Docker Compose.",
+    "image": "/media/images/AkWeatherDashboard.png",
+    "detailsImage": "/media/images/AkWeatherDashboard-preview.png",
+    "technologies": ["C#", ".NET 9", "Blazor", "EF Core", "SQLite", "DDD", "xUnit", "NSubstitute", "Docker"],
+    "github": "https://github.com/lucaass16/AkWeatherDashboard",
+    "demo": "#",
+    "certified": false,
+    "highlight": true
   },
   {
-  "title": "GarIA",
-  "subtitle": "Classificador Inteligente de Resíduos Recicláveis",
-  "description": "Sistema de Computer Vision para identificação e classificação automática de lixo reciclável. Utilizando YOLO, o modelo detecta e categoriza resíduos em quatro classes: Plástico, Vidro, Papel e Metal. Disponibiliza uma API REST desenvolvida em Flask para facilitar a integração do modelo em aplicações de coleta seletiva e gestão de resíduos.",
-  "image": "/media/images/garia.png",
-  "detailsImage": "/media/images/plastic-cup-monster-prediction.jpg",
-  "technologies": ["Python", "YOLO", "Flask", "Computer Vision", "OpenCV", "API REST", "Deep Learning"],
-  "github": "https://github.com/Lucaass16/GarIA/tree/feat/v0-0-1",
-  "demo": "#",
-  "certified": false,
-  "highlight": false
+    "title": "ZeloPet",
+    "subtitle": "Sistema Inteligente de Segurança para Portões",
+    "description": "Sistema completo de segurança para portões automáticos com IoT, app mobile e API centralizada. Utiliza ESP32 para monitorar o estado do portão e identificar pets próximos via Computer Vision com YOLO. App Android em Java com padrão MVVM para controle remoto. API em .NET com testes unitários em xUnit.",
+    "image": "/media/images/zelopet.png",
+    "detailsImage": "/media/images/zelopet-screens.png",
+    "technologies": ["C#", ".NET", "Java", "Android", "Python", "YOLO", "Computer Vision", "ESP32", "IoT", "xUnit"],
+    "github": "#",
+    "demo": "#",
+    "certified": true,
+    "highlight": true
+  },
+  {
+    "title": "Sheets Serializer",
+    "subtitle": "Biblioteca .NET Open Source",
+    "description": "Biblioteca .NET 9 para serialização de dados da Google Sheets API para classes C#, inspirada na serialização JSON. Disponível no NuGet para uso e contribuição.",
+    "image": "/media/images/SheetsSerializer.png",
+    "detailsImage": "/media/images/SheetsSerializer.png",
+    "technologies": ["C#", ".NET 9", "NuGet", "Google Sheets API", "Open Source"],
+    "github": "https://github.com/lucaass16/SheetsSerializer",
+    "demo": "https://www.nuget.org/",
+    "certified": false,
+    "highlight": false
+  },
+  {
+    "title": "GarIA",
+    "subtitle": "Classificador Inteligente de Resíduos Recicláveis",
+    "description": "Sistema de Computer Vision para identificação e classificação automática de lixo reciclável. YOLO detecta e categoriza resíduos em quatro classes: Plástico, Vidro, Papel e Metal. API REST em Flask para integração com aplicações de coleta seletiva.",
+    "image": "/media/images/garia.png",
+    "detailsImage": "/media/images/plastic-cup-monster-prediction.jpg",
+    "technologies": ["Python", "YOLO", "Flask", "Computer Vision", "OpenCV", "API REST", "Deep Learning"],
+    "github": "https://github.com/Lucaass16/GarIA/tree/feat/v0-0-1",
+    "demo": "#",
+    "certified": false,
+    "highlight": false
   }
 ]

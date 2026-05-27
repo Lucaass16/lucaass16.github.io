@@ -36,22 +36,16 @@
     "level": "main"
   },
   {
+  "name": "Entity Framework",
+  "icon": "devicon-dot-net-plain",
+  "category": "backend",
+  "level": "main"
+  },
+  {
     "name": "Flask",
     "icon": "devicon-flask-plain",
     "category": "backend",
     "level": "main"
-  },
-  {
-    "name": "FastAPI",
-    "icon": "devicon-fastapi-plain",
-    "category": "backend",
-    "level": "main"
-  },
-  {
-    "name": "Spring",
-    "icon": "devicon-spring-plain",
-    "category": "backend",
-    "level": "additional"
   },
   {
     "name": "React",
